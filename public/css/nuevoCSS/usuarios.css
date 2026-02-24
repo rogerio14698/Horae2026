@@ -1,0 +1,15 @@
+@import 'utilities.css';
+@import 'colores.css';
+@import 'pagination.css';
+
+/*Editar Usuario*/
+.tituloUsuario{
+    text-decoration: underline;
+    font-weight: bold;
+    color: var(--colorFuenteNegro);
+    font-size: 1.2rem;
+}
+
+.bgEditarUsuario{
+    background-color: var(--colorBGIntermedio) !important;
+}

@@ -1,0 +1,43 @@
+/* DataTables info and pagination overrides */
+.dataTables_info{
+    color: var(--colorFuenteNegro);
+}
+.dataTables_info ul li{
+    color: var(--colorFuenteNegro);
+}
+
+.page-item .page-link {
+    background-color: var(--colorTareaBG) !important;
+    color: var(--colorFuenteNegro) !important;
+    border-color: var(--grisOscuro) !important;
+}
+
+/* Hover/focus for pagination links */
+.page-item:hover .page-link,
+.page-item .page-link:hover,
+.page-item .page-link:focus {
+    background-color: var(--gris) !important;
+    color: var(--colorFuenteNegro) !important;
+    border-color: var(--grisOscuro) !important;
+    cursor: pointer;
+}
+
+/* More specific selectors to override AdminLTE/DataTables defaults */
+.dataTables_wrapper .dataTables_paginate .pagination .page-item .page-link {
+    background-color: var(--colorTareaBG) !important;
+    color: var(--colorFuenteNegro) !important;
+    border-color: var(--grisOscuro) !important;
+}
+.dataTables_wrapper .dataTables_paginate .pagination .page-item.disabled .page-link {
+    background-color: var(--colorTareaBG) !important;
+    color: var(--colorFuenteNegro) !important;
+    border-color: var(--grisOscuro) !important;
+    opacity: 1 !important;
+}
+.dataTables_wrapper .dataTables_paginate .pagination .page-item.active .page-link {
+    background-color: var(--gris) !important;
+    color: var(--colorFuenteBlanco) !important;
+    border-color: var(--grisOscuro) !important;
+}
+
+/* Fin de estilos de paginación */

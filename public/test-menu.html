@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Menu Labels</title>
+    <link rel="stylesheet" href="vendor/adminlte/vendor/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="vendor/adminlte/dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="css/eunomia.css">
+    <style>
+        .test-container { margin: 20px; padding: 20px; border: 1px solid #ccc; }
+        .label { margin: 5px; }
+        code { background: #f5f5f5; padding: 2px 5px; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>Test de Labels del Menú</h1>
+        
+        <h3>Simulación exacta del menú sidebar:</h3>
+        <ul class="sidebar-menu">
+            <li>
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span>Usuarios</span>
+                    <span class="pull-right-container">
+                        <span class="label bg-blue pull-right">15</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-users"></i>
+                    <span>Clientes</span>
+                    <span class="pull-right-container">
+                        <span class="label bg-green pull-right">8</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-folder"></i>
+                    <span>Proyectos</span>
+                    <span class="pull-right-container">
+                        <span class="label bg-aqua pull-right">23</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-tasks"></i>
+                    <span>Tareas</span>
+                    <span class="pull-right-container">
+                        <span class="label bg-yellow pull-right">45</span>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-calendar"></i>
+                    <span>Vacaciones</span>
+                    <span class="pull-right-container">
+                        <span class="label bg-blue pull-right">3</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+        
+        <h3>Pruebas de clases individuales:</h3>
+        <p><code>.label.bg-blue</code>: <span class="label bg-blue">Azul</span></p>
+        <p><code>.label.bg-green</code>: <span class="label bg-green">Verde</span></p>
+        <p><code>.label.bg-aqua</code>: <span class="label bg-aqua">Aguamarina</span></p>
+        <p><code>.label.bg-yellow</code>: <span class="label bg-yellow">Amarillo</span></p>
+        <p><code>.label.bg-red</code>: <span class="label bg-red">Rojo</span></p>
+        <p><code>.label.bg-gray</code>: <span class="label bg-gray">Gris</span></p>
+        
+        <h3>Con especificidad del sidebar:</h3>
+        <div class="sidebar-menu">
+            <p><code>.sidebar-menu .label.bg-blue</code>: <span class="label bg-blue">Azul</span></p>
+            <p><code>.sidebar-menu .label.bg-green</code>: <span class="label bg-green">Verde</span></p>
+            <p><code>.sidebar-menu .label.bg-aqua</code>: <span class="label bg-aqua">Aguamarina</span></p>
+            <p><code>.sidebar-menu .label.bg-yellow</code>: <span class="label bg-yellow">Amarillo</span></p>
+        </div>
+    </div>
+</body>
+</html>
