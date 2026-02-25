@@ -1,14 +1,14 @@
 @extends('adminlte::page')
 
 @section('content_header')
-    <div class="d-flex justify-content-between align-items-center">
-        <h1>Datos del nuevo usuario</h1>
-        <a href="{{ route('users.index') }}" class="btn btn-primary btn-sm"><i class="fas fa-arrow-left"></i> Volver</a>
+    <div class="d-flex justify-content-between align-items-center mr-5">
+        <h1 class="fuenteTitulo">Datos del nuevo usuario</h1>
+        <a href="{{ route('users.index') }}" class="btn btnBlanco btn-sm"><i class=" fas fa-arrow-left"></i> Volver</a>
     </div>
 @stop
 
 @section('content')
-    <div class="row">
+    <div class="row mr-4" >
         <div class="col-12 ">
             <!-- general form elements -->
             <div class="card card-primary card-outline ">

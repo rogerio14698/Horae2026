@@ -1,8 +1,8 @@
 @extends('adminlte::page')
 
 @section('content_header')
-  <div class="d-flex justify-content-between align-items-center">
-    <h1>Listado de Usuarios</h1>
+  <div class="d-flex justify-content-between align-items-center mr-5">
+    <h1 class="fuenteTitulo">Listado de Usuarios</h1>
     @if( \Auth::user()->compruebaSeguridad('crear-usuario') == true)
       <a href="/eunomia/users/create" class="btn btn-success btn-sm"><i class="fas fa-plus"></i> Añadir Usuario</a>
     @endif
@@ -10,10 +10,10 @@
 @stop
 
 @section('content')
-  <div class="row " >
-    <div class="col-12 ">
+  <div class="row mr-4" >
+    <div class="col-12 " >
 
-      <div class="card card-primary card-outline ">
+      <div class="card card-primary card-outline w-100">
         <!-- /.card-header -->
         <div class="card-body bgUsuario">
           <div class="table-responsive ">

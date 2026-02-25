@@ -88,6 +88,7 @@
 .bg-Rol{
     background-color: var(--ColorRol) ;
     color: var(--colorFuenteBlanco) ;
+    margin: 1px;
 }
 
 /* Ejemplos de clases utilitarias que usan las variables */
@@ -98,6 +99,12 @@
 /* Agrupadas: reglas relacionadas con "fuente" ordenadas por longitud del selector (menos primero) */
 .fuente{
     font-family: var(--fuentePrincipal);
+}
+.fuenteTitulo{
+    color: var(--colorFuenteNegro);
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: underline;
 }
 .fuente-gris{
     color:var(--colorFuenteGris)
@@ -253,12 +260,12 @@ Como es json lo hago aqui para sobreescribirlo*/
 
 /*Usuario*/
 .bgUsuario{
-    background-color: var(--colorBGIntermedio);
+    background-color: var(--colorBGIntermedio) !important;
 }
     /*Formulario*/
 .labelFormBlanco label{
     color: var(--colorFuenteNegro)!important;
-    font-size: 1.2rem;
+    font-size: 1.05rem;
     font-weight: bold !important;
     text-decoration: underline;
 }

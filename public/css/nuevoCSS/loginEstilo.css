@@ -47,3 +47,18 @@
     border-color: var(--grisOscuro);
     box-shadow: 0px 1px 1px var(--ColorEnProduccion);
 }
+
+.btnBlanco{
+    border: none;
+    background-color: var(--blanco);
+    color: var(--colorFuenteNegro);
+    border-color: var(--grisOscuro);
+    box-shadow: 0px 1px 1px var(--ColorEnProduccion);
+}
+
+.btnBlanco:hover{
+    background-color: var(--grisOscuro);
+    color: var(--colorFuenteBlanco);
+    border-color: var(--grisOscuro);
+    box-shadow: 0px 1px 1px var(--ColorEnProduccion);
+}
