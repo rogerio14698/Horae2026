@@ -3,18 +3,25 @@
     --colorBGClaro: #7B8288;
     --colorBGOscuro: #636B72;
     --colorBGIntermedio: #6F777D;
+    --colorBGGrisAzulado: #3F4951;
+    --colorBGContador: #d8d8d8;
 
     /* Colores estándar */
     --blanco: #ffffff;
     --gris: #777777;
     --grisOscuro: #555555;
     --negro: #000000;
+    --grisAzulado: #2c343b;
+    --sombra: 0 4px 8px rgba(0, 0, 0, 0.1);
 
     /* Color del Navegador */
     --colorNav: #050942;
 
     /*Bg de la web*/
     --colorBgWeb: #64688f;
+
+    /*Sombra*/
+    --sombra:#2c343b;
 
     /* Tipografía */
     --fuentePrincipal: 'Roboto', sans-serif;
@@ -38,7 +45,22 @@
     /*
     ClienteAzul -> 
     */
+
+    
 }
+/*VER COMO APLICAR EL ROOT A ESTO AUN */
+/* Mapeo de colores directo en CSS */
+.tarea-estado.verde h5, .tarea-estado.success h5, .tarea-estado.green h5 { background-color: #7dff9b; }
+.tarea-estado.azul h5, .tarea-estado.primary h5, .tarea-estado.blue h5, .tarea-estado.cliente h5 { background-color: #8fbdfa; }
+.tarea-estado.rojo h5, .tarea-estado.danger h5, .tarea-estado.red h5 { background-color: #ff7d7d; }
+.tarea-estado.amarillo h5, .tarea-estado.warning h5, .tarea-estado.orange h5 { background-color: #ffeb7d; }
+.tarea-estado.gris h5, .tarea-estado.default h5, .tarea-estado.gray h5 { background-color: #8a9499; }
+
+
+
+
+
+
 /*BG de las etiquitas de producción*/
 .bgColorEnProceso {
     background-color: var(--ColorEnProceso);

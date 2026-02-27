@@ -1,4 +1,5 @@
 
+@import 'global.css';
 @import 'variables.css';
 @import 'badges.css';
 @import 'utilities.css';
@@ -7,6 +8,13 @@
 @import 'loginEstilo.css';
 @import 'usuarios.css';
 
+/*to do list*/
+@import 'toDoList.css';
+@import 'tareas.css';
+
+
+/*Dashboard*/
+@import 'dashboard.css';
 
 
 

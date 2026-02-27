@@ -1,4 +1,4 @@
-<div class="col-md-{{\Auth::user()->isRole('cliente') ? '12' : '6'}} bg-tareas-col">
+<div class="col-md-{{ \Auth::user()->isRole('cliente') ? '12' : '6' }} bg-tareas-col">
     {{-- tareas de la semana --}}
     <div class="card card-primary card-outline movil">
         <div class="card-header" style="background-color:#F2F2F2">
@@ -8,7 +8,8 @@
                     data-original-title="{{ $tareassemana->count() }} Tareas">{{ $tareassemana->count() }}</span>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                         class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                        class="fas fa-times"></i></button>
             </div>
         </div>
         <!-- /.card-header -->
@@ -27,41 +28,70 @@
                         </thead>
                         <tbody>
                             @foreach ($tareassemana as $task)
-                                                        <?php
+                                <?php
                                 $nombre_tarea = (optional($task->project->customer)->codigo_cliente ?? 'TASK') . '_' . $task->titulo_tarea;
-                                                    ?>
-                                                        <tr>
-                                                            <td><a href="{{ route(!Auth::user()->isRole('cliente') ? 'projects.edit' : 'projects.show', [$task->project->id ?? 0]) }}">{{ $task->project ? $task->project->codigo_proyecto : 'Sin proyecto' }}</a></td>
-                                                            </td>
-                                                            <td>{!! !Auth::user()->isRole('cliente') ? '<a href="' . route('tasks.edit', [$task]) . '">' . e($nombre_tarea) . '</a>' : e($nombre_tarea) !!}</td>
-                                                            </td>
-                                                            @if ($task->fechaentrega_tarea->toDateString() < $fechayesterday)
-                                                                <td class="text-red">{{$task->fechaentrega_tarea->toDateString()}}</td>
-                                                            @else
-                                                                <td>{{$task->fechaentrega_tarea->toDateString()}}</td>
-                                                            @endif
-                                                            <td>{!! $task->comments->count() > 0 ? '<img class="comentarios" id="comm_' . $task->id . '" alt="' . $task->comments->count() . ' comentario(s)" title="' . $task->comments->count() . ' comentario(s)" src="' . asset('/images/comments.png') . '" width="20">' : '' !!}
-                                                            </td>
-                                                            <td>
-                                                                @php
-                                                                    // Mapeo de colores a clases de label de AdminLTE/Bootstrap
-                                                                    $labelMap = [
-                                                                        'success' => 'success', 'warning' => 'warning', 'danger' => 'danger',
-                                                                        'info' => 'info', 'primary' => 'primary', 'default' => 'default',
-                                                                        'verde' => 'success', 'amarillo' => 'warning', 'naranja' => 'warning',
-                                                                        'rojo' => 'danger', 'azul' => 'primary', 'gris' => 'default', 'celeste' => 'info',
-                                                                        'green' => 'success', 'yellow' => 'warning', 'red' => 'danger',
-                                                                        'blue' => 'primary', 'gray' => 'default', 'grey' => 'default',
-                                                                        'orange' => 'warning', 'aqua' => 'info',
-                                                                    ];
-                                                                    $taskColor = strtolower(trim($task->taskstate->color ?? 'gray'));
-                                                                    $col = $labelMap[$taskColor] ?? 'default';
-                                                                @endphp
+                                ?>
+                                <tr>
+                                    <td><a
+                                            href="{{ route(!Auth::user()->isRole('cliente') ? 'projects.edit' : 'projects.show', [$task->project->id ?? 0]) }}">{{ $task->project ? $task->project->codigo_proyecto : 'Sin proyecto' }}</a>
+                                    </td>
+                                    </td>
+                                    <td>{!! !Auth::user()->isRole('cliente')
+                                        ? '<a href="' . route('tasks.edit', [$task]) . '">' . e($nombre_tarea) . '</a>'
+                                        : e($nombre_tarea) !!}</td>
+                                    </td>
+                                    @if ($task->fechaentrega_tarea->toDateString() < $fechayesterday)
+                                        <td class="text-red">{{ $task->fechaentrega_tarea->toDateString() }}</td>
+                                    @else
+                                        <td>{{ $task->fechaentrega_tarea->toDateString() }}</td>
+                                    @endif
+                                    <td>{!! $task->comments->count() > 0
+                                        ? '<img class="comentarios" id="comm_' .
+                                            $task->id .
+                                            '" alt="' .
+                                            $task->comments->count() .
+                                            ' comentario(s)" title="' .
+                                            $task->comments->count() .
+                                            ' comentario(s)" src="' .
+                                            asset('/images/comments.png') .
+                                            '" width="20">'
+                                        : '' !!}
+                                    </td>
+                                    <td>
+                                        @php
+                                            // Mapeo de colores a clases de label de AdminLTE/Bootstrap
+                                            $labelMap = [
+                                                'success' => 'success',
+                                                'warning' => 'warning',
+                                                'danger' => 'danger',
+                                                'info' => 'info',
+                                                'primary' => 'primary',
+                                                'default' => 'default',
+                                                'verde' => 'success',
+                                                'amarillo' => 'warning',
+                                                'naranja' => 'warning',
+                                                'rojo' => 'danger',
+                                                'azul' => 'primary',
+                                                'gris' => 'default',
+                                                'celeste' => 'info',
+                                                'green' => 'success',
+                                                'yellow' => 'warning',
+                                                'red' => 'danger',
+                                                'blue' => 'primary',
+                                                'gray' => 'default',
+                                                'grey' => 'default',
+                                                'orange' => 'warning',
+                                                'aqua' => 'info',
+                                            ];
+                                            $taskColor = strtolower(trim($task->taskstate->color ?? 'gray'));
+                                            $col = $labelMap[$taskColor] ?? 'default';
+                                        @endphp
 
-                                                                <small class="badge badge-{{ $col }}">{{ $task->taskstate->state ?? '' }}</small>
+                                        <small
+                                            class="badge badge-{{ $col }}">{{ $task->taskstate->state ?? '' }}</small>
 
-                                                            </td>
-                                                        </tr>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -72,7 +102,7 @@
         </div>
         <!-- /.card-body -->
 
-        @if(!\Auth::user()->isRole('cliente'))
+        @if (!\Auth::user()->isRole('cliente'))
             {{-- pie boton añadir tarea --}}
             <div class="card-footer clearfix">
                 <a href={{ route('tasks.create') }} class="btn btn-block btn-success btn-xs pull-left">Nueva tarea</a>
@@ -90,7 +120,8 @@
                     data-original-title="{{ $tareasmes->count() }} Tareas">{{ $tareasmes->count() }}</span>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                         class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                        class="fas fa-times"></i></button>
             </div>
         </div>
         <!-- /.card-header -->
@@ -109,40 +140,67 @@
                         </thead>
                         <tbody>
                             @foreach ($tareasmes as $task)
-                                                        <?php
+                                <?php
                                 $nombre_tarea = (optional($task->project->customer)->codigo_cliente ?? 'TASK') . '_' . $task->titulo_tarea;
-                                                        ?>
-                                                        <tr>
-                                                            <td><a href="{{ route(!Auth::user()->isRole('cliente') ? 'projects.edit' : 'projects.show', [$task->project->id ?? 0]) }}">{{ $task->project ? $task->project->codigo_proyecto : 'Sin proyecto' }}</a></td>
-                                                            </td>
-                                                            <td><a href="{{ route('tasks.edit', [$task]) }}">{{ $nombre_tarea }}</a></td>
-                                                            @if ($task->fechaentrega_tarea->toDateString() < $fechayesterday)
-                                                                <td class="text-red">{{$task->fechaentrega_tarea->toDateString()}}</td>
-                                                            @else
-                                                                <td>{{$task->fechaentrega_tarea->toDateString()}}</td>
-                                                            @endif
-                                                            <td>{!! $task->comments->count() > 0 ? '<img class="comentarios" id="comm_' . $task->id . '" alt="' . $task->comments->count() . ' comentario(s)" title="' . $task->comments->count() . ' comentario(s)" src="' . asset('/images/comments.png') . '" width="20">' : '' !!}
-                                                            </td>
-                                                            <td>
-                                                                @php
-                                                                    // Mapeo de colores a clases de label de AdminLTE/Bootstrap
-                                                                    $labelMap = [
-                                                                        'success' => 'success', 'warning' => 'warning', 'danger' => 'danger',
-                                                                        'info' => 'info', 'primary' => 'primary', 'default' => 'default',
-                                                                        'verde' => 'success', 'amarillo' => 'warning', 'naranja' => 'warning',
-                                                                        'rojo' => 'danger', 'azul' => 'primary', 'gris' => 'default', 'celeste' => 'info',
-                                                                        'green' => 'success', 'yellow' => 'warning', 'red' => 'danger',
-                                                                        'blue' => 'primary', 'gray' => 'default', 'grey' => 'default',
-                                                                        'orange' => 'warning', 'aqua' => 'info',
-                                                                    ];
-                                                                    $taskColor = strtolower(trim($task->taskstate->color ?? 'gray'));
-                                                                    $col = $labelMap[$taskColor] ?? 'default';
-                                                                @endphp
+                                ?>
+                                <tr>
+                                    <td><a
+                                            href="{{ route(!Auth::user()->isRole('cliente') ? 'projects.edit' : 'projects.show', [$task->project->id ?? 0]) }}">{{ $task->project ? $task->project->codigo_proyecto : 'Sin proyecto' }}</a>
+                                    </td>
+                                    </td>
+                                    <td><a href="{{ route('tasks.edit', [$task]) }}">{{ $nombre_tarea }}</a></td>
+                                    @if ($task->fechaentrega_tarea->toDateString() < $fechayesterday)
+                                        <td class="text-red">{{ $task->fechaentrega_tarea->toDateString() }}</td>
+                                    @else
+                                        <td>{{ $task->fechaentrega_tarea->toDateString() }}</td>
+                                    @endif
+                                    <td>{!! $task->comments->count() > 0
+                                        ? '<img class="comentarios" id="comm_' .
+                                            $task->id .
+                                            '" alt="' .
+                                            $task->comments->count() .
+                                            ' comentario(s)" title="' .
+                                            $task->comments->count() .
+                                            ' comentario(s)" src="' .
+                                            asset('/images/comments.png') .
+                                            '" width="20">'
+                                        : '' !!}
+                                    </td>
+                                    <td>
+                                        @php
+                                            // Mapeo de colores a clases de label de AdminLTE/Bootstrap
+                                            $labelMap = [
+                                                'success' => 'success',
+                                                'warning' => 'warning',
+                                                'danger' => 'danger',
+                                                'info' => 'info',
+                                                'primary' => 'primary',
+                                                'default' => 'default',
+                                                'verde' => 'success',
+                                                'amarillo' => 'warning',
+                                                'naranja' => 'warning',
+                                                'rojo' => 'danger',
+                                                'azul' => 'primary',
+                                                'gris' => 'default',
+                                                'celeste' => 'info',
+                                                'green' => 'success',
+                                                'yellow' => 'warning',
+                                                'red' => 'danger',
+                                                'blue' => 'primary',
+                                                'gray' => 'default',
+                                                'grey' => 'default',
+                                                'orange' => 'warning',
+                                                'aqua' => 'info',
+                                            ];
+                                            $taskColor = strtolower(trim($task->taskstate->color ?? 'gray'));
+                                            $col = $labelMap[$taskColor] ?? 'default';
+                                        @endphp
 
-                                                                <small class="badge badge-{{ $col }}">{{ $task->taskstate->state ?? '' }}</small>
+                                        <small
+                                            class="badge badge-{{ $col }}">{{ $task->taskstate->state ?? '' }}</small>
 
-                                                            </td>
-                                                        </tr>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -153,7 +211,7 @@
         </div>
         <!-- /.card-body -->
 
-        @if(!\Auth::user()->isRole('cliente'))
+        @if (!\Auth::user()->isRole('cliente'))
             {{-- pie boton añadir tarea --}}
             <div class="card-footer clearfix">
                 <a href={{ route('tasks.create') }} class="btn btn-block btn-success btn-xs pull-left">Nueva tarea</a>
@@ -172,7 +230,8 @@
                     data-original-title="{{ $tareasparamastarde->count() }} Tareas">{{ $tareasparamastarde->count() }}</span>
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
                         class="fas fa-minus"></i></button>
-                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i
+                        class="fas fa-times"></i></button>
             </div>
         </div>
         <!-- /.card-header -->
@@ -191,40 +250,66 @@
                         </thead>
                         <tbody>
                             @foreach ($tareasparamastarde as $task)
-                                                        <?php
+                                <?php
                                 $nombre_tarea = (optional($task->project->customer)->codigo_cliente ?? 'TASK') . '_' . $task->titulo_tarea;
-                                                ?>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="{{ route(!Auth::user()->isRole('cliente') ? 'projects.edit' : 'projects.show', [$task->project->id ?? 0]) }}">
-                                                                    {{ $task->project ? $task->project->codigo_proyecto : 'Sin proyecto' }}
-                                                                </a>
-                                                            </td>
-                                                            </td>
-                                                            <td><a href="{{ route('tasks.edit', [$task]) }}">{{ $nombre_tarea }}</a></td>
-                                                            <td>{{$task->fechaentrega_tarea->toDateString()}}</td>
-                                                            <td>{!! $task->comments->count() > 0 ? '<img class="comentarios" id="comm_' . $task->id . '" alt="' . $task->comments->count() . ' comentario(s)" title="' . $task->comments->count() . ' comentario(s)" src="' . asset('/images/comments.png') . '" width="20">' : '' !!}
-                                                            </td>
-                                                            <td>
-                                                                @php
-                                                                    // Mapeo de colores a clases de label de AdminLTE/Bootstrap
-                                                                    $labelMap = [
-                                                                        'success' => 'success', 'warning' => 'warning', 'danger' => 'danger',
-                                                                        'info' => 'info', 'primary' => 'primary', 'default' => 'default',
-                                                                        'verde' => 'success', 'amarillo' => 'warning', 'naranja' => 'warning',
-                                                                        'rojo' => 'danger', 'azul' => 'primary', 'gris' => 'default', 'celeste' => 'info',
-                                                                        'green' => 'success', 'yellow' => 'warning', 'red' => 'danger',
-                                                                        'blue' => 'primary', 'gray' => 'default', 'grey' => 'default',
-                                                                        'orange' => 'warning', 'aqua' => 'info',
-                                                                    ];
-                                                                    $taskColor = strtolower(trim($task->taskstate->color ?? 'gray'));
-                                                                    $col = $labelMap[$taskColor] ?? 'default';
-                                                                @endphp
+                                ?>
+                                <tr>
+                                    <td>
+                                        <a
+                                            href="{{ route(!Auth::user()->isRole('cliente') ? 'projects.edit' : 'projects.show', [$task->project->id ?? 0]) }}">
+                                            {{ $task->project ? $task->project->codigo_proyecto : 'Sin proyecto' }}
+                                        </a>
+                                    </td>
+                                    </td>
+                                    <td><a href="{{ route('tasks.edit', [$task]) }}">{{ $nombre_tarea }}</a></td>
+                                    <td>{{ $task->fechaentrega_tarea->toDateString() }}</td>
+                                    <td>{!! $task->comments->count() > 0
+                                        ? '<img class="comentarios" id="comm_' .
+                                            $task->id .
+                                            '" alt="' .
+                                            $task->comments->count() .
+                                            ' comentario(s)" title="' .
+                                            $task->comments->count() .
+                                            ' comentario(s)" src="' .
+                                            asset('/images/comments.png') .
+                                            '" width="20">'
+                                        : '' !!}
+                                    </td>
+                                    <td>
+                                        @php
+                                            // Mapeo de colores a clases de label de AdminLTE/Bootstrap
+                                            $labelMap = [
+                                                'success' => 'success',
+                                                'warning' => 'warning',
+                                                'danger' => 'danger',
+                                                'info' => 'info',
+                                                'primary' => 'primary',
+                                                'default' => 'default',
+                                                'verde' => 'success',
+                                                'amarillo' => 'warning',
+                                                'naranja' => 'warning',
+                                                'rojo' => 'danger',
+                                                'azul' => 'primary',
+                                                'gris' => 'default',
+                                                'celeste' => 'info',
+                                                'green' => 'success',
+                                                'yellow' => 'warning',
+                                                'red' => 'danger',
+                                                'blue' => 'primary',
+                                                'gray' => 'default',
+                                                'grey' => 'default',
+                                                'orange' => 'warning',
+                                                'aqua' => 'info',
+                                            ];
+                                            $taskColor = strtolower(trim($task->taskstate->color ?? 'gray'));
+                                            $col = $labelMap[$taskColor] ?? 'default';
+                                        @endphp
 
-                                                                <small class="badge badge-{{ $col }}">{{ $task->taskstate->state ?? '' }}</small>
+                                        <small
+                                            class="badge badge-{{ $col }}">{{ $task->taskstate->state ?? '' }}</small>
 
-                                                            </td>
-                                                        </tr>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -235,7 +320,7 @@
         </div>
         <!-- /.card-body -->
 
-        @if(!\Auth::user()->isRole('cliente'))
+        @if (!\Auth::user()->isRole('cliente'))
             {{-- pie boton añadir tarea --}}
             <div class="card-footer clearfix">
                 <a href={{ route('tasks.create') }} class="btn btn-block btn-success btn-xs pull-left">Nueva tarea</a>
@@ -244,7 +329,7 @@
         <!-- /.card-footer -->
     </div>
 
-    @if(!\Auth::user()->isRole('cliente'))
+    @if (!\Auth::user()->isRole('cliente'))
         <!-- Aquí va el chat -->
 
 
@@ -267,7 +352,7 @@
         </div>
         <!-- /.card (comments card) -->
         <!-- ESTADISTICAS DE PROYECTOS -->
-        {{--<div class="card card-success card-outline movil">
+        {{-- <div class="card card-success card-outline movil">
             <div class="card-header">
                 <h3 class="card-title"><i class="fas fa-chart-pie"></i> Estadística de proyectos / tareas</h3>
 

@@ -10,7 +10,6 @@
                 isset($item['icon_color']) ? 'text-' . $item['icon_color'] : ''
             }}"></i>
         @endisset
-
         {{-- Text --}}
         {{ $item['text'] }}
 

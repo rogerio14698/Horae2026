@@ -1,0 +1,168 @@
+@import 'utilities.css';
+@import 'colores.css';
+@import 'pagination.css';
+
+
+/* ==========================================================================
+   Archivo: tareas.css
+   Descripción: Estilos para la sección de Sobrevista de Tareas
+   ========================================================================== */
+
+.tarea-card {
+    background-color: var(--colorBGClaro);
+    padding: 20px;
+    font-family: var(--fuentePrincipal);
+    color: var(--colorFuenteBlanco);
+    border-radius: 4px;
+    box-shadow: var(--sombra);
+    
+}
+.tarea-card h3 {
+    border-bottom: 1px solid var(--colorBGOscuro);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    color: var(--colorFuenteBlanco);
+    font-size: 1.6rem;
+}
+
+/* Encabezado Principal */
+.tarea-card-titulo {
+    color: var(--colorFuenteBlanco);
+    font-weight: normal; /* Menos peso para el subtítulo */
+    text-transform: uppercase;
+    font-size: 0.9rem; /* Más pequeño */
+    margin-left: 10px;
+}
+/*Tarea esta semana*/
+
+
+
+/* Headers de grupos (Semana / Más tareas) */
+.tarea-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+.tarea-tituloHeader{    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 5px;
+}
+/* El círculo con el número dinámico */
+.tarea-conteo {
+    background: var(--colorBGContador);
+    color: var(--colorFuenteNegro);
+    padding: 10px;
+    border-radius: 50%;
+    max-width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+.tarea-header h3 {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--colorFuenteNegro);
+    margin: 0;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+}
+/* Botón Plus (+) */
+.tarea-btn-nuevaTarea button {
+    background: var(--blanco);
+    border-radius: 50%;
+    border: 1px solid var(--gris);
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 10px;
+    color: var(--negro);
+    transition: transform 0.2s;
+}
+.tarea-btn-nuevaTarea button:hover {
+    transform: scale(1.1);
+}
+
+/*=================== Fin del header ===================*/
+
+/* Estructura de Filas */
+.tarea-fila {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 ;
+    /*Ver linea en colores */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    max-width: 100%;
+}
+/* Ajustes de los textos internos */
+.tarea-fila h5 {
+    margin: 0;
+    font-size: 0.85rem;
+    white-space: nowrap; /* Evita que el texto salte de línea */
+    text-overflow: ellipsis; /* Si el nombre es muy largo, pone "..." */
+}
+.tarea-cliente{
+    flex: 0 0 22%; /* Ocupa el 25% */
+    display: flex;
+    justify-content: flex-start !important; /* Alineado a la izquierda */
+}
+.tarea-cliente a {
+    color: var(--colorFuenteBlanco);
+    text-decoration: underline;
+    font-weight: bold;
+}
+.tarea-titulo {
+    flex: 0 0 38%; /* Columna 2: Nombre de Tarea */
+    display: flex;
+    justify-content: flex-start !important;
+}
+
+.tarea-titulo a {
+    text-decoration: underline;
+    color: var(--colorFuenteGris);
+}
+
+.tarea-fecha {
+    color: var(--colorFuenteGrisClaro);
+    display: flex;
+    align-items: flex-end;
+    flex: 0 0 15%; /* Ocupa el 15% */
+    justify-content: center !important;
+}
+.tarea-estado{
+    display: flex;
+    flex: 0 0 20%;
+    justify-content: flex-end !important;
+    color: var(--colorFuenteNegro);
+}
+/* Estilo específico de las etiquetas de estado */
+.tarea-estado h5 {
+    padding: 4px 12px;
+    font-weight: bold;
+    font-size: 10px;
+    text-transform: uppercase;
+    min-width: 110px; /* Ancho fijo para que todos los botones midan igual */
+    text-align: center;
+    border-radius: 2px;
+    color: var(--colorFuenteNegro);
+}
+/*Fin de tarea por semana*/
+
+
+
+
+

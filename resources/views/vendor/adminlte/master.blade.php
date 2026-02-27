@@ -13,7 +13,7 @@
     @yield('meta_tags')
 
     {{-- Title --}}
-    <title>Eunomia-2</title>
+    <title>Eunomia</title>
 
     {{-- Custom stylesheets (pre AdminLTE) --}}
     @yield('adminlte_css_pre')
@@ -69,7 +69,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/datatables/dataTables.bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/adminlte/dist/css/AdminLTE.css') }}">
 
-    <link rel="stylesheet" href="{{ asset('css/eunomia.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/eunomia.css') }}?v={{ filemtime(public_path('css/eunomia.css')) }}">
 </head>
 
 <body class="@yield('classes_body')" @yield('body_data')>

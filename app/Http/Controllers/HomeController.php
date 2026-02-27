@@ -48,8 +48,8 @@ class HomeController extends Controller
         $fechadehoy = Carbon::now('Europe/Madrid');
         $fechayesterday = Carbon::yesterday('Europe/Madrid');
 
-        $estasemana = new Carbon('next sunday');
-        $estemes = new Carbon('next month');
+        $estasemana = Carbon::now('Europe/Madrid')->endOfWeek();
+        $estemes = Carbon::now('Europe/Madrid')->endOfMonth();
 
         if (!Auth::user()->isRole('cliente')) {
             $tareassemana = $yo->tasks()->with(['project.customer'])->where('tasks.role_id', '=', Auth::user()->role_id)

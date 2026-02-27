@@ -1,0 +1,14 @@
+@import 'utilities.css';
+@import 'colores.css';
+@import 'pagination.css';
+
+/*Distribución del dashboard*/
+.main-dashboard {
+  display: grid;
+  grid-template-columns: 2fr 2fr 400px; /* tres columnas de tamaño fijo */
+  gap: 20px; /* espacio entre columnas */
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+}
+
